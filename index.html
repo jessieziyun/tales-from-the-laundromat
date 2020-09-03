@@ -19,28 +19,48 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
     <script src="main.js"></script>
-    
+    <script src="data.js"></script>
+    <script src="content.js"></script>
+
 </head>
 
 <body>
 
     <div class="entry">
-        <div class="logo-container">
-            <img class="logo" src="assets/logo.png">
-        </div>
-        <div class="flex-container">
-            <div class="flex-text">
-                <h1><a href="https://qdtlaundrette-joyce.blogspot.com/" target="_blank">Tell Me More</a></h1>
+        <div class="entry-nav">
+            <div class="logo-container">
+                <img class="logo" src="assets/logo.png">
             </div>
-            <div class="flex-text">
-                <h1><a href="https://jayyung.wordpress.com/" target="_blank">Kai-Oi Joyce Yung</a></h1>
+            <div class="flex-container">
+                <div class="flex-text">
+                    <h1><a href="https://qdtlaundrette-joyce.blogspot.com/" target="_blank">Tell Me More</a></h1>
+                </div>
+                <div class="flex-text">
+                    <h1><a href="https://jayyung.wordpress.com/" target="_blank">Kai-Oi Joyce Yung</a></h1>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="main">
+        <div class="back">
+            <h1>&lt; info</h1>
+        </div>
+        <div id="canvas-container"></div>
         <img class="map" src="assets/map.gif">
+        <div id="content-container">
+            <div id="content">
+                <h2 class="exit-player">&lt; back</h2>
+                <div id="player"></div>
+                <div class="quote">
+                    <p>"When you’re in people’s knickers - all boundaries disappear"</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
