@@ -1,13 +1,29 @@
-let canvas_container;
-const placeholder_video_id = '-wQJl__SfS8';
-let content_container;
+let canvas_container, content_container;
+let laundrette;
+let audio_player;
 let quote;
+const audio_embed_start = "https://audiomack.com/embed/song/kjy-1/";
+const audio_embed_end = "?background=1";
+const placeholder_video_id = '-wQJl__SfS8';
 
 const vid_id = {
   bowwash: '-wQJl__SfS8'
 }
 
-let laundrette;
+const audio_id = {
+  bare: "clare-bare-laundertte-morcambe",
+  brilliant: "its-brilliant-mainwise-with-charlie-nottingham",
+  cityroad: "janice-city-road-laundry-sheffield",
+  tumble: "tumble-wash-laundry-services-stafford-donna",
+  dizzydolly: "dizzy-dolly-launderette-jan",
+  clockwash: "clockwash-launderette-matthew",
+  washdry: "the-wash-and-dry-shop-dui-0190",
+  southparade: "south-parade-oxford-interview-with-ed",
+  traga: "debbie-traga-landerette",
+  bedknobs: "bednobsjilly",
+  cornwallfa: "vicky-cornwall-fa",
+  blackness: "the-blackness-launderette"
+}
 
 let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -22,7 +38,7 @@ function onYouTubeIframeAPIReady() {
   console.log("yt player initialised");
   const vidWidth = 800;
   const vidHeight = vidWidth * 9 / 16;
-  player = new YT.Player('player', {
+  player = new YT.Player('video-player', {
     height: vidHeight,
     width: vidWidth,
     videoId: placeholder_video_id,
@@ -35,9 +51,11 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady(event) {
-  canvas_container.addEventListener("iconclicked", () => {
+  canvas_container.addEventListener("videoiconclicked", () => {
     console.log('playing video for: ' + laundrette_name);
-
+    $("#video-player").css({
+      "display": "block"
+    });
     //if the play icon is clicked, load the video of the associated laudrette
     laundrette = vid_id[laundrette_name];
     if (laundrette != '') {
@@ -53,6 +71,9 @@ function onPlayerReady(event) {
     $(".exit-player").click(
       () => {
         $("#content-container").css({
+          "display": "none"
+        });
+        $("#video-player").css({
           "display": "none"
         });
         player.stopVideo(); //stop the video
@@ -76,6 +97,30 @@ function onPlayerStateChange(event) {
   }
 }
 
+function playAudio() {
+  canvas_container.addEventListener("audioiconclicked", () => {
+    console.log('playing audio for: ' + laundrette_name);
+    audio_player = document.getElementById("audio-player");
+    laundrette = audio_id[laundrette_name]
+    audio_player.src = audio_embed_start + laundrette + audio_embed_end;
+    $("#audio-player").css({
+      "display": "block"
+    });
+    content_container = document.getElementById("content-container");
+    content_container.style.display = "block"; //display the audio player
+
+    $(".exit-player").click(
+      () => {
+        $("#content-container").css({
+          "display": "none"
+        });
+        $("#audio-player").css({
+          "display": "none"
+        });
+      },
+    );
+  }, false);
+}
 function changeQuote(laundrette){
 
   $( ".quote" ).text( `${quote}` );

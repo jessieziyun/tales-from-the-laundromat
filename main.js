@@ -2,6 +2,7 @@ let mobile;
 let canvas;
 let canvasHeight;
 let areas;
+let icons;
 let areaLabel;
 let nextCommand;
 let laundrette_name;
@@ -42,7 +43,8 @@ function toggleLandingPage() {
 }
 
 function preload() {
-    areas = loadImage("assets/area.png");
+    areas = loadImage("assets/areas.png");
+    icons = loadImage("assets/icons.png");
     console.log("preload complete");
 }
 
@@ -64,8 +66,10 @@ function setup() {
     canvas.mouseReleased(canvasReleased);
     canvas.parent("canvas-container");
     areas.resize(windowWidth, 0);
-    image(areas, 0, 0);
+    icons.resize(windowWidth, 0);
+    image(icons, 0, 0);
     toggleLandingPage();
+    playAudio();
 }
 
 function mouseMoved() {
@@ -121,12 +125,22 @@ function executeCommand(c) {
         case "video":
             if (c.laundrette != null) {
                 laundrette_name = c.laundrette;
-                var event = new Event("iconclicked", {
+                let video_event = new Event("videoiconclicked", {
                     bubbles: true
                 });
-                canvas_container.dispatchEvent(event);
+                canvas_container.dispatchEvent(video_event);
                 // console.log("laundrette name: " + laundrette_name);
             } else print("Video did not work :(");
+            break;
+        case "audio":
+            if (c.laundrette != null) {
+                laundrette_name = c.laundrette;
+                let audio_event = new Event("audioiconclicked", {
+                    bubbles: true
+                });
+                canvas_container.dispatchEvent(audio_event);
+                console.log("laundrette name: " + laundrette_name);
+            } else print("Audio did not work :(");
             break;
     }
 }
@@ -165,6 +179,7 @@ function canvasReleased() {
 function windowResized() {
     canvasHeight = floor(windowWidth * mapHeight / mapWidth);
     resizeCanvas(windowWidth, canvasHeight);
+    icons.resize(windowWidth, 0);
     areas.resize(windowWidth, 0);
-    image(areas, 0, 0);
+    image(icons, 0, 0);
   }
