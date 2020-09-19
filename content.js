@@ -1,13 +1,19 @@
 let canvas_container, content_container;
 let laundrette;
 let audio_player;
-let quote;
+let flex_container;
 const audio_embed_start = "https://audiomack.com/embed/song/kjy-1/";
 const audio_embed_end = "?background=1";
 const placeholder_video_id = '-wQJl__SfS8';
 
 const vid_id = {
-  bowwash: '-wQJl__SfS8'
+  bowwash: '-wQJl__SfS8', //tim
+  bowwash_jv: 'dtlxzanFO8A', //juliana and vida //not included
+  super: 'l9yEaqeavsk', //merlyn
+  super_ikey: 'vOcdMM4ZaDg', //ikey //not included
+  northmoor: 'r8wcICG70dI',
+  cleanbean: 'u_38zZbK8eA', //samia
+  cleanbean_n: 'Zobqf4O6s3g', //nuala //not included
 }
 
 const audio_id = {
@@ -33,10 +39,8 @@ let player;
 
 function onYouTubeIframeAPIReady() {
   canvas_container = document.getElementById("canvas-container");
-  // console.log(canvas_container);
-  // canvas_container.addEventListener("p5loaded", () => {
   console.log("yt player initialised");
-  const vidWidth = 800;
+  const vidWidth = 900;
   const vidHeight = vidWidth * 9 / 16;
   player = new YT.Player('video-player', {
     height: vidHeight,
@@ -47,7 +51,6 @@ function onYouTubeIframeAPIReady() {
       'onStateChange': onPlayerStateChange
     }
   });
-  // });
 }
 
 function onPlayerReady(event) {
@@ -65,6 +68,8 @@ function onPlayerReady(event) {
       console.warn("no video found. playing placeholder video.")
     }
     video_active = true;
+    flex_container = document.getElementById("flex");
+    flex_container.style.bottom = "675px";
     content_container = document.getElementById("content-container");
     content_container.style.display = "block"; //display the video player
 
@@ -106,9 +111,11 @@ function playAudio() {
     $("#audio-player").css({
       "display": "block"
     });
+    $(".quote").text(`"${quote}"`);
+    flex_container = document.getElementById("flex");
+    flex_container.style.bottom = "600px";
     content_container = document.getElementById("content-container");
-    content_container.style.display = "block"; //display the audio player
-
+    content_container.style.display = "block"; //display the audio players
     $(".exit-player").click(
       () => {
         $("#content-container").css({
@@ -120,8 +127,4 @@ function playAudio() {
       },
     );
   }, false);
-}
-function changeQuote(laundrette){
-
-  $( ".quote" ).text( `${quote}` );
 }

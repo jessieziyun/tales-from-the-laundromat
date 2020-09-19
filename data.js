@@ -1,95 +1,143 @@
 const LAUNDERETTES = {
 
     areaColours: {
-        h0006ff: {
+        h0069b4: {
             laundrette: "bare",
             label: "Bare Laundrette",
+            location: "Morecambe, LA4 6BY",
             cmd: "audio",
+            duration: "11m 3s",
             quote: "We operate purely on goodwill, what we have in the shops is worth nothing",
         },
-        /*
-        h: {
+        h009fe3: {
             laundrette: "brilliant",
             label: "It's Brilliant",
+            location: "Nottingham, NG2 5LN",
             cmd: "audio",
+            duration: "7m 23s",
             quote: "You’re the boss you never had",
         },
-        */
         hff0000: {
+            // Tim's video. Juliana&Vida video not included yet
             laundrette: "bowwash",
             cmd: "video",
             label: "Bow Wash",
+            location: "London, E3 5ES",
+            duration: "10m 11s",
             quote: "When you’re in people’s knickers - all boundaries disappear",
         },
-        /*
-        h: {
+        h009a93: {
             laundrette: "cityroad",
             label: "City Road Laundry",
+            location: "Sheffield, S2 1GJ",
             cmd: "audio",
-            quote: "When Mrs Green owned it, you weren’t allowed a chair, you couldn’t sit down, you were paid minimum wage. She was like Mrs Bucket… she wanted you to know that she was the boss … and you did what she said",
+            duration: "16m 45s",
+            quote: "She was like Mrs Bucket… she wanted you to know that she was the boss… and you did what she said",
         },
-        h: {
+        hffff00: {
+            // merlyn. ikey vid not yet included
             laundrette: "super",
             label: "Super Laundry Company",
+            location: "London, E2 RY0",
             cmd: "video",
-            quote: "I live in a flat, we don’t have the drying space… I’ve got three children… … Iam here so often the customers think I work here",
+            duration: "4m 35s",
+            quote: "I am here so often the customers think I work here",
         },
-        h: {
+        h951b81: {
             laundrette: "tumble",
             label: "Tumble Wash Laundry Services",
+            location: "Stafford, ST17 9LT",
             cmd: "audio",
-            quote: "The one thing I am good at is talking, so I do like to have a good chat with my customers .. we do NHS bed curtains too. 
-            \n
-            We have our elderly regulars, they live in smaller properties where they dont have enough space for the washing machine and a tumble drier… they use the launderette as an excuse to have somebody to talk to. 
-            \n
-            She liked to get out and have a good moan to everybody because she got sick of listening to herself.. Some of my customers got sick of hearing her… but she was absolutely lovely. 
-            \n
-            We’ve pulled all types of weird things out of our pipe works over the years…
-            \n
-            The customers don’t like to come in when other staff are working.. A lot of customers will come in for me if they want a natter, if they just want to come in and just want to come in and get their washing done and go, then they won’t care who they come in for 
-            \n
-            For my Syrian coworkers it’s more difficult for them to interact .. we’ve had a lot of Eastern European people coming into the town… it’s probably doubled over the past three years. I think people mind it because we’re such a quiet little town. You’ll see big groups of Romanians all talking together in their own language.
+            duration: "15m 17s",
+            quote: "A lot of customers will come in for me if they want a natter"
         },
-        h: {
+        h312783: {
             laundrette: "northmoor",
-            label: "Northmoor Community Launderette"
+            label: "Northmoor Community Launderette",
+            location: "Northmoor, M12 5RT",
+            cmd: "video",
+            duration: "18m 43s",
+            quote: "We wanted it to be right for the community that we serve… we were an essential service for them"
         },
-        h: {
+        he50051: {
+            // samia. missing nuala
             laundrette: "cleanbean",
-            label: "The Clean Bean"
+            label: "The Clean Bean",
+            location: "Bristol, BS7 8PB",
+            cmd: "video",
+            duration: "3m 58s",
+            quote: "You don’t feel like you’re alone when everybody in the entire world is affected by Covid"
         },
-        h: {
+        h662483: {
             laundrette: "dizzydolly",
-            label: "Dizzy Dolly Tub"
+            label: "Dizzy Dolly Tub",
+            location: "Stourport-on-Severn, DY13 8DP",
+            cmd: "audio",
+            duration: "18m 50s",
+            quote: "What they don’t know about you, they make up"
         },
-        h: {
+        h009640: {
             laundrette: "clockwash",
-            label: "Clockwash Launderette"
+            label: "Clockwash Launderette",
+            location: "King's Lynn, PE30 4PU",
+            cmd: "audio",
+            duration: "8m 28s",
+            quote: "We had someone come in and want to heat his up can of soup in the tumble drier"
         },
-        h: {
+        h95c11f: {
             laundrette: "washdry",
-            label: "The Wash and Dry Shop"
+            label: "The Wash and Dry Shop",
+            location: "St Ives, PE27 5BN",
+            cmd: "audio",
+            duration: "5m 18s",
+            quote: "It’s more than 85% white here, there’s only three Chinese take aways, that’s quite low I think"
         },
-        h: {
+        hea5b0c: {
             laundrette: "southparade",
-            label: "The South Parade Launderette"
+            label: "The South Parade Launderette",
+            location: "Oxford, OX2 7JN",
+            cmd: "audio",
+            duration: "10m 18s",
+            quote: "A guy who used to be in a band with Tony Blair… he was the singer"
         },
-        h: {
+        h00ff00: {
             laundrette: "traga",
-            label: "TRAGA Launderette"
+            label: "TRAGA Launderette",
+            location: "Maidstone, ME16 9LN",
+            cmd: "audio",
+            duration: "14m 53s",
+            quote: "Some of them have a little sing and dance with the lady that worked here"
         },
-        h: {
+        h0000ff: {
             laundrette: "bedknobs",
-            label: "Bedknobs BnB"
+            label: "Bedknobs BnB",
+            location: "Bodmin, PL31 2DX",
+            cmd: "audio",
+            duration: "8m 45s",
+            quote: ""
         },
-        h: {
+        hff00ff: {
             laundrette: "cornwallfa",
-            label: "Cornwall Football Association"
+            label: "Cornwall Football Association",
+            location: "Bodmin, PL31 2RQ",
+            cmd: "audio",
+            duration: "4m 36s",
+            quote: "They have an expectation that everything just magically comes back but that’s down to John’s hard work"
         },
-        h: {
+        hf39200: {
             laundrette: "blackness",
-            label: "The Blackness Launderette"
+            label: "The Blackness Launderette",
+            location: "Dundee, DD1 5PQ",
+            cmd: "audio",
+            duration: "4m 4s",
+            quote: "It’s quite old fashioned in here, a lot of wood going on and brick work"
         },
-        */
+        h00ffff: {
+            laundrette: "townend",
+            label: "Townend Laundry Services",
+            location: "Bodmin, PL31 1JS",
+            duration: "12m 4s",
+            quote: "",
+        },
     }
 };

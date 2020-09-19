@@ -1,15 +1,18 @@
+let map;
 let mobile;
 let canvas;
 let canvasHeight;
-let areas;
-let icons;
-let areaLabel;
+let areas, icons;
+let areaLabel, locationLabel, durationLabel;
 let nextCommand;
 let laundrette_name;
 let video_active;
+let quote;
+let font;
+const FONT_FILE = "assets/SpaceMono-Regular.ttf";
 
-const mapWidth = 730;
-const mapHeight = 701;
+const mapWidth = 4000;
+const mapHeight = 5000;
 
 function isAndroid() {
     return /Android/i.test(navigator.userAgent);
@@ -32,9 +35,22 @@ function toggleLandingPage() {
                 });
             },
         );
-        $('.back').click(
+        $('.hamburger-icon').click(
             () => {
-                $('.entry').css({
+                $('.about').css({
+                    "display": "block"
+                });
+                $('.hamburger-icon').css({
+                    "display": "none"
+                });
+            },
+        );
+        $('.x-icon').click(
+            () => {
+                $('.about').css({
+                    "display": "none"
+                });
+                $('.hamburger-icon').css({
                     "display": "block"
                 });
             },
@@ -44,22 +60,19 @@ function toggleLandingPage() {
 
 function preload() {
     areas = loadImage("assets/areas.png");
-    icons = loadImage("assets/icons.png");
+    icons = loadImage("assets/uk.jpg");
+    font = loadFont(FONT_FILE);
     console.log("preload complete");
 }
 
 function setup() {
     mobile = isMobile();
+    areaLabel = "";
+    locationLabel = "";
+    durationLabel = "";
+
     if (mobile) {
         console.log("mobile");
-        /*
-        let logo = document.getElementsByClassName("logo")[0];
-        console.log(logo);
-        if(logo !== undefined){
-            logo.style.width = "200";
-            
-        }
-        */
     }
     canvasHeight = floor(windowWidth * mapHeight / mapWidth);
     canvas = createCanvas(windowWidth, canvasHeight);
@@ -72,6 +85,16 @@ function setup() {
     playAudio();
 }
 
+function draw() {
+    image(icons, 0, 0);
+    textFont(font, 16);
+    textAlign(LEFT, BASELINE);
+    fill('#fff15f');
+    text(areaLabel, mouseX+ 20, mouseY + 20);
+    text(locationLabel, mouseX + 20, mouseY + 40);
+    text(durationLabel, mouseX + 20, mouseY + 60);
+}
+
 function mouseMoved() {
 
     if (areas != null) {
@@ -81,14 +104,17 @@ function mouseMoved() {
         if (alpha(c) != 0) {
             let command = getCommand(c);
             if (command != null)
-                if (command.label != null) {
-                    areaLabel = command.label;
-                    // console.log(areaLabel);
+                if (command.label != null) 
+                    areaLabel = command.label;{
+                    locationLabel = command.location;
+                    durationLabel = "Media duration: " + command.duration;
                 }
-            // console.log(command);
-            // console.log(c);
         }
-
+        if (alpha(c) == 0) {
+            areaLabel = "";
+            locationLabel = "";
+            durationLabel = "";
+        }
     }
 }
 
@@ -120,7 +146,7 @@ function getCommand(c) {
 }
 
 function executeCommand(c) {
-    // print("Executing command " + c.cmd);
+    areaLabel = "";
     switch (c.cmd) {
         case "video":
             if (c.laundrette != null) {
@@ -129,12 +155,12 @@ function executeCommand(c) {
                     bubbles: true
                 });
                 canvas_container.dispatchEvent(video_event);
-                // console.log("laundrette name: " + laundrette_name);
             } else print("Video did not work :(");
             break;
         case "audio":
             if (c.laundrette != null) {
                 laundrette_name = c.laundrette;
+                quote = c.quote;
                 let audio_event = new Event("audioiconclicked", {
                     bubbles: true
                 });
@@ -165,7 +191,6 @@ function touchEnded() {
 }
 
 function canvasReleased() {
-    // print("CLICK " + mouseButton);
     if (areas != null) {
         var c = areas.get(mouseX, mouseY);
             var command = getCommand(c);
