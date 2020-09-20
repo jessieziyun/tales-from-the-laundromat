@@ -73,6 +73,15 @@ function setup() {
 
     if (mobile) {
         console.log("mobile");
+        $('#flex').css('width', '350px');
+        $('h2').css('font-size', '18px');
+        $('h1').css('font-size', '12px');
+        $('.left').css('left', '-100px');
+        $('.right').css('right', '-100px');
+        $('.about-text').css('width', '350px');
+        $('.hamburger-icon').css({'right': '15px', 'top': '20px'});
+        $('.x-icon').css({'right': '15px', 'top': '20px'});
+        $('.mobile').css('display', 'block');
     }
     canvasHeight = floor(windowWidth * mapHeight / mapWidth);
     canvas = createCanvas(windowWidth, canvasHeight);
