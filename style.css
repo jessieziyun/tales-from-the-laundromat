@@ -1,43 +1,104 @@
-@import url("https://fonts.googleapis.com/css?family=Space+Mono");
- 
-html {
+ html {
     margin: 0px;
     padding: 0px;
 }
 
 body {
     position: absolute;
-    font-family: Space Mono, sans-serif;
+    font-family: sans-serif;
     font-style: normal;
     margin: 0px;
     padding: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: #282828;
-    color: white;
+    background-color: #63b7a3;
+    color: #f7f5c2;
     overflow: hidden;
+}
+
+.entry {
+    z-index: 5;
+    position: fixed;
+    margin-top: 0;
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(99, 183, 165);
+}
+
+.entry-nav {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(-50% - 25px));
+    text-align: center;
+}
+
+.logo-container {
+    padding-top: 90px;
+    padding-bottom: 75px;
+    height: 396px;
+    width: 517px;
+    margin: auto;
+}
+
+.logo {
+    z-index:10;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+}
+
+.txt {
+    position: fixed;
+    top: 20%;
+    left: 25%;
+}
+
+.logo:hover {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(720deg);
+    transition: all 1s ease-in-out 0s;
+    cursor: pointer;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 1000px;
+    max-width: 100vw;
+}
+
+.flex-text {
+    width: 50%;
+    text-align: center;
+}
+
+.flex-text:hover {
+    animation: shake 0.5s; 
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 h1 {
     font-size: 28px;
 }
 
-h1 a {
-    text-decoration: none;
-    color: white;
-}
-
-h1 a:hover {
-    color: #fff15f;
-}
-
 a {
-    /* text-decoration: none; */
-    color: white;
-}
-
-a:hover {
-    color: #fff15f;
+    text-decoration: none;
+    color: #f7f5c2;
 }
 
 p {
@@ -113,7 +174,7 @@ p {
     margin-left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(40, 40, 40, 0.95);
+    background-color: rgba(99, 183, 165);
 }
 
 .entry-nav {
@@ -173,7 +234,7 @@ p {
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(40, 40, 40, 0.95);
+    background-color: rgba(99, 183, 165, 0.8);
 }
 
 #content {
@@ -206,9 +267,15 @@ p {
 }
 
 .quote {
-    width: 600px;
-    font-size: 22px;
-    color: #fff15f;
+    z-index: 1;
+    position: fixed;
+    left: 50px;
+    bottom: 100px;
+    width: 550px;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold;
+    color: #f7f5c2;
 }
 
 #video-player {

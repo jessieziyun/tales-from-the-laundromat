@@ -9,7 +9,6 @@ let laundrette_name;
 let video_active;
 let quote;
 let font;
-const FONT_FILE = "assets/SpaceMono-Regular.ttf";
 
 const mapWidth = 4000;
 const mapHeight = 5000;
@@ -25,6 +24,19 @@ function isiOS() {
 function isMobile() {
     return isAndroid() || isiOS();
 }
+
+function toggleLandingPage() {
+    $(document).ready(() => {
+        $('.logo').click(
+            () => {
+                $('.entry').css({
+                    "display": "none"
+                });
+            },
+        );
+    });
+}
+
 
 function toggleLandingPage() {
     $(document).ready(() => {
@@ -61,7 +73,7 @@ function toggleLandingPage() {
 function preload() {
     areas = loadImage("assets/areas.png");
     icons = loadImage("assets/uk.jpg");
-    font = loadFont(FONT_FILE);
+    // font = loadFont(FONT_FILE);
     console.log("preload complete");
 }
 
@@ -73,15 +85,6 @@ function setup() {
 
     if (mobile) {
         console.log("mobile");
-        $('#flex').css('width', '350px');
-        $('h2').css('font-size', '18px');
-        $('h1').css('font-size', '12px');
-        $('.left').css('left', '-100px');
-        $('.right').css('right', '-100px');
-        $('.about-text').css('width', '350px');
-        $('.hamburger-icon').css({'right': '15px', 'top': '20px'});
-        $('.x-icon').css({'right': '15px', 'top': '20px'});
-        $('.mobile').css('display', 'block');
     }
     canvasHeight = floor(windowWidth * mapHeight / mapWidth);
     canvas = createCanvas(windowWidth, canvasHeight);
@@ -96,12 +99,29 @@ function setup() {
 
 function draw() {
     image(icons, 0, 0);
-    textFont(font, 16);
+    textFont('Arial', 26);
     textAlign(LEFT, BASELINE);
-    fill('#fff15f');
-    text(areaLabel, mouseX+ 20, mouseY + 20);
-    text(locationLabel, mouseX + 20, mouseY + 40);
-    text(durationLabel, mouseX + 20, mouseY + 60);
+    textStyle(BOLD);
+    textLeading(30);
+    // fill('#f7f5c2');
+
+    let xPos;
+    let text_width;
+    let l_name = textWidth(areaLabel);
+    let media_duration = textWidth(durationLabel) + 30; 
+
+    l_name > media_duration
+    ? (text_width = l_name)
+    : (text_width = media_duration);
+
+    mouseX + text_width > width
+    ? (xPos = width - text_width + 20)
+    : (xPos = mouseX + 20);
+
+    fill(100);
+    text(areaLabel, xPos, mouseY + 30);
+    text(locationLabel, xPos, mouseY + 90);
+    text(durationLabel, xPos, mouseY + 120);
 }
 
 function mouseMoved() {
@@ -117,12 +137,20 @@ function mouseMoved() {
                     areaLabel = command.label;{
                     locationLabel = command.location;
                     durationLabel = "Media duration: " + command.duration;
+                    quote = command.quote;
+                    $(".quote").text(`"${quote}"`);
+                    quote != ""
+                    ? $(".quote").css({"display": "block"})
+                    : $(".quote").css({"display": "none"});
                 }
         }
         if (alpha(c) == 0) {
             areaLabel = "";
             locationLabel = "";
             durationLabel = "";
+            $(".quote").css({
+                "display": "none"
+              });
         }
     }
 }
@@ -169,7 +197,6 @@ function executeCommand(c) {
         case "audio":
             if (c.laundrette != null) {
                 laundrette_name = c.laundrette;
-                quote = c.quote;
                 let audio_event = new Event("audioiconclicked", {
                     bubbles: true
                 });

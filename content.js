@@ -111,7 +111,6 @@ function playAudio() {
     $("#audio-player").css({
       "display": "block"
     });
-    $(".quote").text(`"${quote}"`);
     flex_container = document.getElementById("flex");
     flex_container.style.bottom = "600px";
     content_container = document.getElementById("content-container");
