@@ -11,7 +11,7 @@ body {
     padding: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: #63b7a3;
+    background-color: #7bcbb9;
     color: #f7f5c2;
     overflow: hidden;
 }
@@ -23,7 +23,7 @@ body {
     margin-left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(99, 183, 165);
+    background-color:white;
 }
 
 .entry-nav {
@@ -92,8 +92,9 @@ body {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-h1 {
+h1 a {
     font-size: 28px;
+    color: #7bcbb9;
 }
 
 a {
@@ -153,19 +154,6 @@ p {
     cursor: pointer;
 }
 
-.mobile {
-    display: none;
-    z-index: 5;
-    position: fixed;
-    margin-top: 0;
-    margin-left: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background-color: rgba(255, 242, 95, 0.85);
-    color: rgba(40, 40, 40, 0.95);
-}
-
 .about {
     display: none;
     z-index: 6;
@@ -174,7 +162,7 @@ p {
     margin-left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(99, 183, 165);
+    background-color: #7bcbb9;
 }
 
 .entry-nav {
@@ -234,7 +222,7 @@ p {
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(99, 183, 165, 0.8);
+    background-color: #7bcbb9;
 }
 
 #content {
@@ -245,21 +233,13 @@ p {
     overflow: scroll
 }
 
-#flex {
+.exit-player {
     position: fixed;
     z-index: 10;
-    bottom: 600px;
+    top: 100px;
     left: 50%;
     transform: translate(-50%, 0);
-    display: flex;
-    justify-content: space-between;
     width: 900px;
-}
-
-.exit-player {
-    z-index: 10;
-    width: 100px;
-    margin-top: 0;
 }
 
 .exit-player:hover {
@@ -271,19 +251,58 @@ p {
     position: fixed;
     left: 50px;
     bottom: 100px;
-    width: 550px;
-    font-size: 32px;
+    width: 400px;
+    padding: 25px;
+    font-size: 20px;
     font-style: italic;
     font-weight: bold;
-    color: #f7f5c2;
+    background-color: #f7f5c2;
+    color: #646464;
 }
 
 #video-player {
-    padding-top: 250px;
+    padding-top: 175px;
     display: none;
 }
 
 #audio-player {
-    padding-top: 320px;
     display: none;
+    padding-top: 175px;
+    width: 900px;
+    max-width: 100vw;
+    height: 252px;
+}
+
+hr {
+    height: 2px;
+    border-width: 0;
+    color: #f7f5c2;
+    background-color: #f7f5c2;
+    margin-bottom: 50px;
+}
+
+#gallery {
+    text-align: center;
+    margin-top: 50px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100vw;
+    margin-bottom: 50px;
+}
+
+#homepage {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+#homepage:hover {
+    cursor: pointer;
 }
