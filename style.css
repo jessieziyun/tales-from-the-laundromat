@@ -1,4 +1,4 @@
- html {
+html {
     margin: 0px;
     padding: 0px;
 }
@@ -23,7 +23,7 @@ body {
     margin-left: 0;
     width: 100%;
     height: 100%;
-    background-color:#faecda;
+    background-color: #faecda;
 }
 
 .entry-nav {
@@ -44,7 +44,8 @@ body {
     justify-content: center;
 }
 
-#logo-image, #logo-text {
+#logo-image,
+#logo-text {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -79,21 +80,53 @@ body {
 }
 
 .flex-text:hover {
-    animation: shake 0.5s; 
+    animation: shake 0.5s;
 }
 
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
 }
 
 h1 a {
@@ -119,7 +152,7 @@ p {
     transform: translate(0, -50%);
     left: -200px;
     transform: rotate(-90deg);
-	transform-origin: center top 0;
+    transform-origin: center top 0;
 }
 
 .right {
@@ -129,19 +162,19 @@ p {
     transform: translate(0, -50%);
     right: -200px;
     transform: rotate(90deg);
-	transform-origin: center top 0;
+    transform-origin: center top 0;
 }
 
 .hamburger-icon {
     position: fixed;
     right: 45px;
     top: 50px;
-    z-index: 5;
+    z-index: 15;
     width: 20px;
     height: auto;
 }
 
-.hamburger-icon:hover{
+.hamburger-icon:hover {
     cursor: pointer;
 }
 
@@ -154,13 +187,13 @@ p {
     height: auto;
 }
 
-.x-icon:hover{
+.x-icon:hover {
     cursor: pointer;
 }
 
 .about {
     display: none;
-    z-index: 6;
+    z-index: 20;
     position: fixed;
     margin-top: 0;
     margin-left: 0;
@@ -181,8 +214,9 @@ p {
     position: fixed;
     top: 50%;
     left: 50%;
-    min-width: 380px;
+    min-width: 350px;
     transform: translate(-50%, -50%);
+    overflow: scroll;
 }
 
 .main {
@@ -224,18 +258,19 @@ p {
     position: fixed;
     z-index: 10;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     top: 0;
     left: 0;
-    background-color: #13a46c;
+    /*     background-color: #13a46c; */
 }
 
 #content {
     position: fixed;
     height: 100vh;
+    min-width: 350px;
     left: 50%;
     transform: translate(-50%, 0);
-    overflow: scroll
+    overflow: scroll;
 }
 
 .exit-player {
@@ -280,14 +315,18 @@ p {
 
 #launderette-story {
     padding-top: 175px;
+    border-radius: 15px;
+    background-color: #292929;
     display: none;
 }
 
 #gallery {
     text-align: center;
     margin-top: 50px;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 #gallery::-webkit-scrollbar {
@@ -304,8 +343,16 @@ p {
     text-align: center;
     width: 100%;
     line-height: 12px;
+    margin-bottom: 100px;
 }
 
 #homepage:hover {
     cursor: pointer;
+}
+
+.text-button {
+    display: inline-block;
+    border-radius: 25px;
+    background-color: #292929;
+    width: 100px;
 }

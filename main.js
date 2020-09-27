@@ -39,6 +39,9 @@ function toggleLandingPage() {
             });
         });
         $("#homepage").click(() => {
+            $("#content-container").css({
+                display: "none"
+            });
             $(".entry").css({
                 display: "block"
             });
@@ -83,11 +86,10 @@ function setup() {
 }
 
 function draw() {
-
-    contentdisplay = $('#content-container').css("display");
+    contentdisplay = $("#content-container").css("display");
+    image(icons, 0, 0);
 
     if (!mobile && contentdisplay == "none") {
-        image(icons, 0, 0);
         textFont("Arial", 20);
         textAlign(LEFT, BASELINE);
         textStyle(BOLD);
@@ -107,12 +109,12 @@ function draw() {
             (xPos = mouseX + 20);
 
         if (nameLabel != "") {
-            fill('#13a46c');
+            fill("#13a46c");
             noStroke();
             rect(xPos - 20, mouseY, text_width + 35, 110);
         }
 
-        fill('#faecda');
+        fill("#faecda");
         text(nameLabel, xPos, mouseY + 30);
         text(areaLabel, xPos, mouseY + 50);
         text(locationLabel, xPos, mouseY + 70);
@@ -148,7 +150,7 @@ function mouseMoved() {
                     if (quote != "" && contentdisplay == "none") {
                         $(".quote").css({
                             display: "block"
-                        })
+                        });
                     } else {
                         $(".quote").css({
                             display: "none"
@@ -212,10 +214,12 @@ function executeCommand(c) {
         $("#gallery").empty();
 
         for (let i = 0; i < numberOfImages; i++) {
-            $('#gallery').prepend($('<img>', {
-                class: 'image',
-                src: `assets/gallery/${laundrette_name}${i+1}.jpg`
-            }));
+            $("#gallery").prepend(
+                $("<img>", {
+                    class: "image",
+                    src: `assets/gallery/${laundrette_name}${i + 1}.jpg`
+                })
+            );
         }
     }
 
@@ -237,7 +241,7 @@ function executeCommand(c) {
             break;
         case "txt":
             console.log("text");
-            text = c.text;
+            let text = c.text;
             $("#launderette-story").css({
                 display: "block"
             });
@@ -246,10 +250,10 @@ function executeCommand(c) {
                 display: "block"
             });
             $(".exit-player").click(() => {
-                $("#content-container").css({
+                $("#launderette-story").css({
                     display: "none"
                 });
-                $("#launderette-story").css({
+                $("#content-container").css({
                     display: "none"
                 });
             });
