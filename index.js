@@ -8,71 +8,94 @@ let laundrette_name;
 let video_active;
 let contentdisplay;
 let quote;
+let story;
 
 const mapWidth = 1000;
 const mapHeight = 1250;
 
-function toggleLandingPage() {
+function toggleDivs() {
     $(document).ready(() => {
+        $("#mobile-message").click(() => {
+            $("#mobile").css('display', 'none');
+        });
+        $("#info-button").click(() => {
+            $("#quote").css('display', 'none');
+            $("#info").css('display', 'block');
+            $("#entry").css('display', 'none');
+            $("#content-container").css('display', 'none');
+            $("#about").css('display', 'none');
+            $("#map-home").css('display', 'none');
+        });
+        $("#map-button").click(() => {
+            $("#info").css('display', 'none');
+            $("#map-home").css('display', 'block');
+        });
         $("#logo-image").click(() => {
-            $(".entry").css({
-                display: "none"
-            });
-            $("#content-container").css({
-                display: "none"
-            });
+            $("#entry").css('display', 'none');
+            $("#content-container").css('display', 'none');
+            $("#map-home").css('display', 'block');
         });
-        $(".hamburger-icon").click(() => {
-            $(".about").css({
-                display: "block"
-            });
-            $(".hamburger-icon").css({
-                display: "none"
-            });
+        $("#hamburger-icon").click(() => {
+            $("#about").css('display', 'block');
+            $("#hamburger-icon").css('display', 'none');
         });
-        $(".x-icon").click(() => {
-            $(".about").css({
-                display: "none"
-            });
-            $(".hamburger-icon").css({
-                display: "block"
-            });
+        $("#x-icon").click(() => {
+            $("#about").css('display', 'none');
+            $("#hamburger-icon").css('display', 'block');
         });
-        $("#homepage").click(() => {
-            $("#content-container").css({
-                display: "none"
-            });
-            $(".entry").css({
-                display: "block"
-            });
+        $(".homepage-button").click(() => {
+            $("#content-container").css('display', 'none');
+            $("#info").css('display', 'none');
+            $("#entry").css('display', 'block');
+            $("#quote").css('display', 'none');
+            $("#map-home").css('display', 'none');
         });
     });
 }
 
 function preload() {
+    if (mobile) {
+        console.log("p5 setup, mobile");
+        icons = loadImage("assets/map-small.jpg");
+        $("#mobile").css('display', 'block');
+        $("#map-home").css({
+            'left': '-10px',
+            'top': '-5px'
+        });
+        $("#x-icon").css({
+            'right': '15px',
+            'top': '15px'
+        });
+        $("#hamburger-icon").css({
+            'right': '15px',
+            'top': '15px'
+        });
+        $('h2').css('font-size', '18px');
+        $('h1').css('font-size', '18px');
+        $('#logo-container').css('margin-top', '20px');
+        $('#text-container').css({
+            'flex-direction': 'column',
+            'margin-top': '50px',
+            'min-width': '300px',
+            'width': '350px'
+        });
+        $('.flex-text').css('margin', '5px');
+        $("#main").css('top', '100px');
+        $("#audio-player").css('width', '400px');
+        $("#exit-player").css('width', '375px');
+    } else {
+        icons = loadImage("assets/map.jpg");
+    }
     areas = loadImage("assets/areas.png");
-    icons = loadImage("assets/map.jpg");
     console.log("preload complete");
 }
+
 
 function setup() {
     nameLabel = "";
     areaLabel = "";
     locationLabel = "";
     durationLabel = "";
-
-    if (mobile) {
-        console.log("p5 setup, mobile");
-        $(".main").css({
-            top: "100px"
-        });
-        $(".audio-player").css({
-            width: "400px"
-        });
-        $(".exit-player").css({
-            width: "375px"
-        });
-    }
 
     canvasHeight = floor((windowWidth * mapHeight) / mapWidth);
     canvas = createCanvas(windowWidth, canvasHeight);
@@ -81,8 +104,9 @@ function setup() {
     areas.resize(windowWidth, 0);
     icons.resize(windowWidth, 0);
     image(icons, 0, 0);
-    toggleLandingPage();
+    toggleDivs();
     playAudio();
+    displayText();
 }
 
 function draw() {
@@ -146,13 +170,13 @@ function mouseMoved() {
                     quote = command.quote;
                 }
                 if (!mobile) {
-                    $(".quote").text(`"${quote}"`);
+                    $("#quote").text(`"${quote}"`);
                     if (quote != "" && contentdisplay == "none") {
-                        $(".quote").css({
+                        $("#quote").css({
                             display: "block"
                         });
                     } else {
-                        $(".quote").css({
+                        $("#quote").css({
                             display: "none"
                         });
                     }
@@ -165,7 +189,7 @@ function mouseMoved() {
             areaLabel = "";
             locationLabel = "";
             durationLabel = "";
-            $(".quote").css({
+            $("#quote").css({
                 display: "none"
             });
         }
@@ -241,22 +265,11 @@ function executeCommand(c) {
             break;
         case "txt":
             console.log("text");
-            let text = c.text;
-            $("#launderette-story").css({
-                display: "block"
+            story = c.text;
+            let text_event = new Event("texticonclicked", {
+                bubbles: true
             });
-            $("#launderette-story").html(`<h2>${text}</h2>`);
-            $("#content-container").css({
-                display: "block"
-            });
-            $(".exit-player").click(() => {
-                $("#launderette-story").css({
-                    display: "none"
-                });
-                $("#content-container").css({
-                    display: "none"
-                });
-            });
+            canvas_container.dispatchEvent(text_event);
     }
 }
 
@@ -290,9 +303,11 @@ function canvasReleased() {
 }
 
 function windowResized() {
-    canvasHeight = floor((windowWidth * mapHeight) / mapWidth);
-    resizeCanvas(windowWidth, canvasHeight);
-    icons.resize(windowWidth, 0);
-    areas.resize(windowWidth, 0);
-    image(icons, 0, 0);
+    if (!mobile) {
+        canvasHeight = floor((windowWidth * mapHeight) / mapWidth);
+        resizeCanvas(windowWidth, canvasHeight);
+        icons.resize(windowWidth, 0);
+        areas.resize(windowWidth, 0);
+        image(icons, 0, 0);
+    }
 }

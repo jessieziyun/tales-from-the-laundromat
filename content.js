@@ -57,7 +57,7 @@ function onYouTubeIframeAPIReady() {
 
   mobile = isMobile();
   console.log("yt player initialised, mobile: " + mobile);
-  
+
   let vidWidth;
   let vidHeight;
 
@@ -69,7 +69,7 @@ function onYouTubeIframeAPIReady() {
     vidWidth = 400;
     vidHeight = (vidWidth * 9) / 16;
   }
-  
+
   player = new YT.Player("video-player", {
     height: vidHeight,
     width: vidWidth,
@@ -87,9 +87,7 @@ function onPlayerReady(event) {
     "videoiconclicked",
     () => {
       console.log("playing video for: " + laundrette_name);
-      $("#video-player").css({
-        display: "block"
-      });
+      $("#video-player").css('display', 'block');
       //if the play icon is clicked, load the video of the associated laudrette
       laundrette = vid_id[laundrette_name];
       if (laundrette != "") {
@@ -101,14 +99,11 @@ function onPlayerReady(event) {
       video_active = true;
       content_container = document.getElementById("content-container");
       content_container.style.display = "block"; //display the video player
-
-      $(".exit-player").click(() => {
-        $("#content-container").css({
-          display: "none"
-        });
-        $("#video-player").css({
-          display: "none"
-        });
+      $("#map-home").css('display', 'none');
+      $("#exit-player").click(() => {
+        $("#content-container").css('display', 'none');
+        $("#video-player").css('display', 'none');
+        $("#map-home").css('display', 'block');
         player.stopVideo(); //stop the video
         video_active = false;
       });
@@ -118,9 +113,9 @@ function onPlayerReady(event) {
 }
 
 function toggleVisibility(div) {
-  div.style.display === "block"
-    ? (div.style.display = "none")
-    : (div.style.display = "block");
+  div.style.display === "block" ?
+    (div.style.display = "none") :
+    (div.style.display = "block");
 }
 
 function onPlayerStateChange(event) {
@@ -139,18 +134,35 @@ function playAudio() {
       audio_player = document.getElementById("audio-player");
       laundrette = audio_id[laundrette_name];
       audio_player.src = audio_embed_start + laundrette + audio_embed_end;
-      $("#audio-player").css({
-        display: "block"
-      });
+      $("#audio-player").css('display', 'block');
+      $("#map-home").css('display', 'none');
       content_container = document.getElementById("content-container");
       content_container.style.display = "block"; //display the audio players
-      $(".exit-player").click(() => {
-        $("#content-container").css({
-          display: "none"
-        });
-        $("#audio-player").css({
-          display: "none"
-        });
+      $("#exit-player").click(() => {
+        $("#content-container").css('display', 'none');
+        $("#audio-player").css('display', 'none');
+        $("#map-home").css('display', 'block');
+      });
+    },
+    false
+  );
+}
+
+function displayText() {
+  canvas_container.addEventListener(
+    "texticonclicked",
+    () => {
+      $("#launderette-story").html(`<h2>${story}</h2>`);
+      $("#launderette-story").css('display', 'block');
+      $("#content-container").css('display', 'block');
+      $("#map-home").css('display', 'none');
+      $("#exit-player").click(() => {
+        $("#content-container").css('display', 'none');
+        $("#launderette-story").css('display', 'none');
+        $("#map-home").css('display', 'block');
+      });
+      $("#content-home").click(() => {
+        $("#launderette-story").css('display', 'none');
       });
     },
     false

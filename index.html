@@ -9,9 +9,9 @@
 
     <title>Tales from the Laundromat</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
 
     <meta name="title" content="Tales from the Laundromat" />
     <meta name="description" content="Artwork by Kai-Oi Joyce Yung" />
@@ -26,23 +26,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
-    <script src="main.js"></script>
+    <script src="index.js"></script>
     <script src="data.js"></script>
     <script src="content.js"></script>
 </head>
 
 <body>
-    <div class="entry">
-        <div class="entry-nav">
-            <div class="logo-container">
+    <div id="mobile">
+        <div class="centred-text">
+            <h2>
+                Tales from the Laundromat – Coin Operated is best viewed on your desktop, but is also accessible via
+                mobile.
+            </h2>
+            <h2>
+                To listen to artist Kai-Oi Joyce Yung's introductions to the stories collected in Tales of the
+                Laundromat – Coin Operated, please click on "Intro" on the homepage.
+            </h2>
+            <br><br>
+            <div id="mobile-message">
+                <h2>Ok, got it!</h2>
+            </div>
+        </div>
+    </div>
+    <div id="entry">
+        <div id="entry-nav">
+            <div id="logo-container">
                 <img id="logo-image" src="assets/logo.png" />
                 <img id="logo-text" src="assets/logo-text.png" />
             </div>
-            <div class="text-container">
+            <div id="text-container">
                 <div class="flex-text">
                     <h1>
                         <a href="https://qdtlaundrette-joyce.blogspot.com/" target="_blank">Tell Me More</a>
                     </h1>
+                </div>
+                <div class="flex-text">
+                    <h1 id="info-button">Intro</h1>
                 </div>
                 <div class="flex-text">
                     <h1>
@@ -53,9 +72,45 @@
         </div>
     </div>
 
-    <div class="about">
-        <img class="x-icon" src="assets/x.png" />
-        <div class="about-text">
+    <div id="info">
+        <div id="info-container">
+            <div id="info-nav">
+                <div class="text-button" id="info-home">
+                    <h2 class="homepage-button">← <i>home&nbsp;</i></h2>
+                </div>
+                <div id="map-button" class="text-button">
+                    <h2><i>map</i> →</h2>
+                </div>
+            </div>
+            <div id="playlist">
+                <h2>Listen to Kai-Oi Joyce Yung's introductions to the various launderette stories gathered in Tales of
+                    the Laundromat – Coin Operated below...</h2>
+                <br>
+                <h3>Introduction:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-introduction"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+                <h3>The North:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-the-north"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+                <h3>The South:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-the-south"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+                <h3>The East:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-the-east"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+                <h3>The West:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-the-west"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+                <h3>Rounding Up:</h3>
+                <iframe src="https://audiomack.com/embed/song/kjy-1/tales-of-the-laundromat-coin-operated-rounding-up"
+                    scrolling="no" width="100%" height="252" scrollbars="no" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div id="about">
+        <img id="x-icon" src="assets/x.png" />
+        <div class="centred-text">
             <h2>
                 Tales from the Laundromat - Coin Operated gathers the lively voices
                 and stories of launderette owners and their customers across
@@ -77,18 +132,22 @@
         </div>
     </div>
 
-    <img class="hamburger-icon" src="assets/menu.png" />
+    <img id="hamburger-icon" src="assets/menu.png" />
 
-    <div class="quote"></div>
+    <div id="map-home" class="text-button">
+        <h2 class="homepage-button">← <i>home&nbsp;</i></h2>
+    </div>
 
-    <div class="main">
+    <div id="quote"></div>
+
+    <div id="main">
         <div id="canvas-container"></div>
-        <img class="map" src="assets/map.jpg" />
+        <img id="map" src="assets/map.jpg" />
     </div>
     <div id="content-container">
-        <div class="exit-player">
+        <div id="exit-player">
             <div class="text-button">
-                <h2>←<i>back</i></h2>
+                <h2>← <i>back</i></h2>
             </div>
         </div>
         <div id="content">
@@ -96,7 +155,7 @@
             <iframe id="audio-player" scrolling="no" scrollbars="no" frameborder="0"></iframe>
             <div id="launderette-story"></div>
             <div id="gallery"></div>
-            <div id="homepage">
+            <div class="homepage-button" id="content-home">
                 <br />
                 <div class="text-button">
                     <h2><i>home</i></h2>
