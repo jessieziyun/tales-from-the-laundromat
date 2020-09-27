@@ -14,8 +14,11 @@ const mapHeight = 1250;
 
 function toggleLandingPage() {
     $(document).ready(() => {
-        $(".logo").click(() => {
+        $("#logo-image").click(() => {
             $(".entry").css({
+                display: "none"
+            });
+            $("#content-container").css({
                 display: "none"
             });
         });
@@ -104,12 +107,12 @@ function draw() {
             (xPos = mouseX + 20);
 
         if (nameLabel != "") {
-            fill('#7bcbb9');
+            fill('#13a46c');
             noStroke();
             rect(xPos - 20, mouseY, text_width + 35, 110);
         }
 
-        fill('#f7f5c2');
+        fill('#faecda');
         text(nameLabel, xPos, mouseY + 30);
         text(areaLabel, xPos, mouseY + 50);
         text(locationLabel, xPos, mouseY + 70);
@@ -122,6 +125,7 @@ function mouseMoved() {
         var c = areas.get(mouseX, mouseY);
 
         if (alpha(c) != 0) {
+            document.body.style.cursor = "pointer";
             let command = getCommand(c);
             if (command != null) {
                 if (command.name != null) {
@@ -154,6 +158,7 @@ function mouseMoved() {
             }
         }
         if (alpha(c) == 0) {
+            document.body.style.cursor = "auto";
             nameLabel = "";
             areaLabel = "";
             locationLabel = "";
@@ -230,6 +235,24 @@ function executeCommand(c) {
             canvas_container.dispatchEvent(audio_event);
             console.log("laundrette name: " + laundrette_name);
             break;
+        case "txt":
+            console.log("text");
+            text = c.text;
+            $("#launderette-story").css({
+                display: "block"
+            });
+            $("#launderette-story").html(`<h2>${text}</h2>`);
+            $("#content-container").css({
+                display: "block"
+            });
+            $(".exit-player").click(() => {
+                $("#content-container").css({
+                    display: "none"
+                });
+                $("#launderette-story").css({
+                    display: "none"
+                });
+            });
     }
 }
 

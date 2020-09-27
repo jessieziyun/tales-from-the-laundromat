@@ -197,6 +197,7 @@ const LAUNDERETTES = {
             label: "Townend Laundry Services",
             location: "Bodmin",
             images: "",
+            cmd: "audio",
             duration: "12m 4s",
             quote: "You meet all sorts of characters form all walks of life … they would come in for a chat and we would put the world to rights. \nThe whole process of laundry has changed at the moment.. You have to wear so much protective equipment, everything has to be double sealed… \nWith Cornwall FA… in the winter season it can be quite a challenge when the kits come in and you start to recognise what colour it should be! \nI sometimes play a guessing game… you transport yourself back when a song plays and you think where did those years go?\n I used to work in a prison and 55% are from a black ethnic background",
         },
@@ -216,8 +217,10 @@ const LAUNDERETTES = {
             label: "The New City Laundrette",
             location: "Inverness",
             images: "",
+            cmd: "txt",
             duration: "12m 4s",
-            quote: "When I first moved into my Highlander flat, I took Magic to a nearby laundrette on Tomnahurich St (17 Young St) and the Thai woman who owns it was pretty accepting of pugs, she once had a fat fawn one back home she said. She insisted on temporarily adopting her, she carried Magic the whole time I was there. The fellow washers were confused because this was a clean'n provision and dogs are on the whole- considered to be dirty animals. I got given dirty looks but no matter, Magic and the laundrette owner were singing to each other, her arms embraced M's paws so I could wash my duvets hands free. I know on the fb page photo the young woman on the right is her daughter, I think the woman on the left is an employee, I can only guess that she is taking the photo. She was really talkative, helpful teaching me how to use the huge washing machines and super friendly",
+            text: "When I first moved into my Highlander flat, I took Magic to a nearby laundrette on Tomnahurich St (17 Young St) and the Thai woman who owns it was pretty accepting of pugs, she once had a fat fawn one back home she said. She insisted on temporarily adopting her, she carried Magic the whole time I was there. The fellow washers were confused because this was a clean'n provision and dogs are on the whole- considered to be dirty animals. I got given dirty looks but no matter, Magic and the laundrette owner were singing to each other, her arms embraced M's paws so I could wash my duvets hands free. I know on the fb page photo the young woman on the right is her daughter, I think the woman on the left is an employee, I can only guess that she is taking the photo. She was really talkative, helpful teaching me how to use the huge washing machines and super friendly",
+            quote: "When I first moved into my Highlander flat, I took Magic to a nearby laundrette on Tomnahurich St (17 Young St) and the Thai woman who owns it was pretty accepting of pugs...",
         },
     }
 };
