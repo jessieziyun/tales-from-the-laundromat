@@ -9,7 +9,7 @@ const placeholder_video_id = "-wQJl__SfS8";
 
 const vid_id = {
   bowwash_tim: "-wQJl__SfS8",
-  bowwash_jv: "dtlxzanFO8A",
+  bowwash_jv: "KSkH601ivcw",
   super_merlyn: "l9yEaqeavsk",
   super_ikey: "vOcdMM4ZaDg",
   northmoor: "r8wcICG70dI",

@@ -18,16 +18,16 @@ function toggleDivs() {
         $("#mobile-message").click(() => {
             $("#mobile").css('display', 'none');
         });
-        $("#info-button").click(() => {
+        $("#intro-button").click(() => {
             $("#quote").css('display', 'none');
-            $("#info").css('display', 'block');
+            $("#intro").css('display', 'block');
             $("#entry").css('display', 'none');
             $("#content-container").css('display', 'none');
             $("#about").css('display', 'none');
             $("#map-home").css('display', 'none');
         });
         $("#map-button").click(() => {
-            $("#info").css('display', 'none');
+            $("#intro").css('display', 'none');
             $("#map-home").css('display', 'block');
         });
         $("#logo-image").click(() => {
@@ -45,10 +45,13 @@ function toggleDivs() {
         });
         $(".homepage-button").click(() => {
             $("#content-container").css('display', 'none');
-            $("#info").css('display', 'none');
+            $("#intro").css('display', 'none');
             $("#entry").css('display', 'block');
             $("#quote").css('display', 'none');
             $("#map-home").css('display', 'none');
+        });
+        $("#instruction-message").click(() => {
+            $("#instructions").css('display', 'none');
         });
     });
 }
@@ -165,6 +168,9 @@ function mouseMoved() {
                 }
                 if (command.duration != null) {
                     durationLabel = "Media duration: " + command.duration;
+                    if (command.duration == "") {
+                        durationLabel = "";
+                    }
                 }
                 if (command.quote != null) {
                     quote = command.quote;
